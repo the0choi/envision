@@ -10,14 +10,14 @@ export default function AuthPage({ setUser }) {
   }
 
   return (
-    <main>
-      <h1>AuthPage</h1>
-      <button onClick={handleToggle}>{showLogin ? 'Sign Up' : 'Login' }</button>
+    <main className="w-screen h-screen flex flex-col justify-center items-center">
+      <h1 className="text-xl font-bold text-white mb-3">Welcome to Project 4.</h1>
       { showLogin ?
         <LoginForm setUser={setUser} />
       :
         <SignUpForm setUser={setUser} />
       }
+      <p className="text-gray-400 text-sm hover:cursor-pointer" onClick={handleToggle}>{showLogin ? `Don't have an account?` : 'Already have an account?' }</p>
     </main>
   );
 }

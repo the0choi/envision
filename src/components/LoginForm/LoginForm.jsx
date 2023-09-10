@@ -28,14 +28,12 @@ export default function LoginForm({ setUser }) {
   }
 
   return (
-    <div>
-      <div className="form-container">
-        <form autoComplete="off" onSubmit={handleSubmit}>
-          <label>Email</label>
-          <input type="text" name="email" value={credentials.email} onChange={handleChange} required />
-          <label>Password</label>
-          <input type="password" name="password" value={credentials.password} onChange={handleChange} required />
-          <button type="submit">LOG IN</button>
+    <div className="w-96">
+      <div className="p-2 border-solid border-transparent rounded-xl">
+        <form autoComplete="off" onSubmit={handleSubmit} className="flex flex-col justify-center items-center">
+          <input className="w-full py-4 px-4 my-1 border-solid focus:border border-white rounded-xl bg-[#1c1c1c] text-white" type="text" name="email" placeholder="Email" value={credentials.email} onChange={handleChange} required />
+          <input className="w-full py-4 px-4 my-1 border-solid focus:border border-white rounded-xl bg-[#1c1c1c] text-white" type="password" name="password" placeholder="Password" value={credentials.password} onChange={handleChange} required />
+          <button className="w-full py-4 px-4 my-1 border-solid border-transparent rounded-xl bg-white text-white font-bold btn-hover" type="submit">Log in</button>
         </form>
       </div>
       <p className="error-message">&nbsp;{error}</p>
