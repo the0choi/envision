@@ -39,12 +39,12 @@ export default class SignUpForm extends Component {
     const disable = this.state.password !== this.state.confirm;
     return (
       <div className="w-96">
-        <div className="p-2 border-solid border-transparent rounded-xl">
+        <div className="p-2 rounded-xl">
           <form autoComplete="off" onSubmit={this.handleSubmit} className="flex flex-col justify-center items-center">
-            <input type="text" name="name" placeholder="Name" value={this.state.name} onChange={this.handleChange} required className="w-full py-4 px-4 my-1 border-solid focus:border border-white rounded-xl bg-[#1c1c1c] text-white"/>
+            <input type="text" name="name" placeholder="Name" value={this.state.name} onChange={this.handleChange} required className="w-full py-4 px-4 my-1 rounded-xl bg-[#1c1c1c] text-white"/>
             <input type="email" name="email" placeholder="Email" value={this.state.email} onChange={this.handleChange} required className="w-full py-4 px-4 my-1 border-solid bfocus:border border-white rounded-xl bg-[#1c1c1c] text-white"/>
-            <input type="password" name="password" placeholder="Password" value={this.state.password} onChange={this.handleChange} required className="w-full py-4 px-4 my-1 border-solid focus:border border-white rounded-xl bg-[#1c1c1c] text-white"/>
-            <input type="password" name="confirm" placeholder="Confirm Password" value={this.state.confirm} onChange={this.handleChange} required className="w-full py-4 px-4 my-1 border-solid focus:border border-white rounded-xl bg-[#1c1c1c] text-white"/>
+            <input type="password" name="password" placeholder="Password" value={this.state.password} onChange={this.handleChange} required className="w-full py-4 px-4 my-1 rounded-xl bg-[#1c1c1c] text-white"/>
+            <input type="password" name="confirm" placeholder="Confirm Password" value={this.state.confirm} onChange={this.handleChange} required className="w-full py-4 px-4 my-1 rounded-xl bg-[#1c1c1c] text-white"/>
             <button className="w-full py-4 px-4 my-1 border-solid border-transparent rounded-xl bg-white text-white font-bold btn-hover" type="submit" disabled={disable} >Sign Up</button>
           </form>
         </div>

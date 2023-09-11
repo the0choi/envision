@@ -40,61 +40,10 @@ body {
   height: 100vh;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
-
-#root {
-  height: 100%;
-}
-
-.align-ctr {
-  text-align: center;
-}
-
-.align-rt {
-  text-align: right;
-}
-
-.smaller {
-  font-size: smaller;
-}
-
-.flex-ctr-ctr {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.flex-col {
-  flex-direction: column;
-}
-
-.flex-j-end {
-  justify-content: flex-end;
-}
-
-.scroll-y {
-  overflow-y: scroll;
-}
-
-.section-heading {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  background-color: var(--tan-1);
-  color: var(--text-dark);
-  border: .1vmin solid var(--tan-3);
-  border-radius: 1vmin;
-  padding: .6vmin;
-  text-align: center;
-  font-size: 2vmin;
-}
-
 p.error-message {
-  color: var(--orange);
+  color: orangered;
   text-align: center;
+  margin-bottom: 5px;
 }
 
 button:disabled, form:invalid button[type="submit"] {
@@ -114,4 +63,42 @@ button:disabled, form:invalid button[type="submit"] {
 .btn-hover:hover {
   background-position: 0 0;
   box-shadow: 0 4px 15px 0 rgba(116, 79, 168, 0.75);
+}
+
+.text-animate {
+  background: linear-gradient(to right, #68b6ff, #8718e2, #68b6ff, #8718e2);
+  background-size: 400% auto;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  animation: shine 5s linear infinite;
+}
+
+@keyframes shine {
+  0% {
+    background-position: 100% center;
+  }
+  100% {
+    background-position: 0 center;
+  }
+}
+
+.surprise-btn:hover {
+  animation: shake 0.8s cubic-bezier(.36,.07,.19,.97) both;
+  transform: translate3d(0, 0, 0);
+}
+
+@keyframes shake {
+  10%, 90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+  20%, 80% {
+    transform: translate3d(1px, 0, 0);
+  }
+  30%, 50%, 70% {
+    transform: translate3d(-1px, 0, 0);
+  }
+  40%, 60% {
+    transform: translate3d(1px, 0, 0);
+  }
 }

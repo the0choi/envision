@@ -11,7 +11,7 @@ export default function AuthPage({ setUser }) {
 
   return (
     <main className="w-screen h-screen flex flex-col justify-center items-center">
-      <h1 className="text-xl font-bold text-white mb-3">Welcome to Project 4.</h1>
+      <h1 className="text-xl text-white mb-3">Welcome to <span className="text-animate font-bold">Visionary</span>.</h1>
       { showLogin ?
         <LoginForm setUser={setUser} />
       :
