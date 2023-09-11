@@ -7,6 +7,10 @@ const postSchema = new Schema({
     ref: 'User',
     required: true
     },
+  name: {
+    type: String,
+    required: true
+  },
   prompt: {
     type: String,
     trim: true,

@@ -36,8 +36,8 @@ export default function PostForm(props) {
             },
             body: JSON.stringify({ prompt: form.prompt }),
         });
-        const data = await response.json();
-        setForm({ ...form, photo: data[0].url });
+        const imageUrl = await response.json();
+        setForm({ ...form, photo: imageUrl });
       } catch (err) {
         console.error(err);
       }
@@ -85,7 +85,7 @@ export default function PostForm(props) {
                   Surprise me!
                 </button>
               </div>
-              <textarea className="w-96 h-full py-4 px-4 my-1 rounded-xl bg-[#1c1c1c] text-white" name="prompt" placeholder="Start with a detailed description..." value={form.prompt} onChange={handleChange} />
+              <textarea className="w-96 h-full py-4 px-4 my-1 rounded-xl bg-[#1c1c1c] text-white" name="prompt" maxlength="500" placeholder="Start with a detailed description..." value={form.prompt} onChange={handleChange} />
               <button className="w-96 py-4 px-4 my-2 border-solid border-transparent rounded-xl bg-white text-white font-bold btn-hover" type="button" onClick={generateImage} >{generatingImg ? 'Generating...' : 'Generate'}</button>
             </div>
             <div className="relative bg-gray-50 border border-gray-300 rounded-xl w-96 h-96 my-1 flex justify-center items-center overflow-hidden">

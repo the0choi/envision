@@ -25,9 +25,8 @@ export default function HomePage() {
 
       if (response.ok) {
         const result = await response.json();
-        setAllPosts(result);
+        setAllPosts(result.reverse());
         setLoading(false);
-        console.log(allPosts)
       }
 
     } catch (err) {

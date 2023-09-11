@@ -4,6 +4,7 @@ import { getUser } from '../../utilities/users-service';
 import AuthPage from '../AuthPage/AuthPage';
 import HomePage from '../HomePage/HomePage';
 import NewPostPage from '../NewPostPage/NewPostPage';
+import ShowPostPage from '../ShowPostPage/ShowPostPage';
 import NavBar from '../../components/NavBar/NavBar';
 
 export default function App() {
@@ -18,6 +19,7 @@ export default function App() {
               {/* Route components in here */}
               <Route path="/" element={<HomePage />} />
               <Route path="/posts/new" element={<NewPostPage />} />
+              <Route path="/posts/:id" element={<ShowPostPage />} />
             </Routes>
           </>
           :

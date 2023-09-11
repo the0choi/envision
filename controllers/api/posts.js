@@ -1,3 +1,5 @@
+// import {v2 as cloudinary} from 'cloudinary';
+const cloudinary = require('cloudinary').v2;
 const Post = require("../../models/post");
 const jwt = require("jsonwebtoken");
 const OpenAI = require("openai");
@@ -19,6 +21,7 @@ async function create(req, res) {
     const post = await Post.create({
       ...req.body,
       user: decodedToken.user._id,
+      name: decodedToken.user.name
     });
     res.status(200).json(post);
   } catch (err) {
@@ -37,6 +40,10 @@ async function index(req, res) {
 
 async function show(req, res) {
   try {
+    let post = await Post.findById(req.params.id);
+    if (!post) return res.status(404).json({ error: "Post not found" });
+
+    res.json(post);
   } catch (err) {
     res.status(400).json(err);
   }
@@ -51,7 +58,18 @@ async function generateImage(req, res) {
       n: 1,
       size: "512x512",
     });
-    res.json(response.data);
+
+    cloudinary.config({
+      cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+      api_key: process.env.CLOUDINARY_API_KEY,
+      api_secret: process.env.CLOUDINARY_API_SECRET
+    });
+
+    cloudinary.uploader.upload(response.data[0].url, function(error, result) {
+      console.log(result, error);
+      res.json(result.url);
+    });
+
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
