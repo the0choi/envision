@@ -66,12 +66,12 @@ button:disabled, form:invalid button[type="submit"] {
 }
 
 .text-animate {
-  background: linear-gradient(to right, #68b6ff, #8718e2, #68b6ff, #8718e2);
+  background: linear-gradient(to right, #68b6ff, #a647f3, #68b6ff, #ac54f5);
   background-size: 400% auto;
   -webkit-background-clip: text;
   color: transparent;
   -webkit-text-fill-color: transparent;
-  animation: shine 5s linear infinite;
+  animation: shine 8s linear infinite;
 }
 
 @keyframes shine {
@@ -101,4 +101,74 @@ button:disabled, form:invalid button[type="submit"] {
   40%, 60% {
     transform: translate3d(1px, 0, 0);
   }
+}
+
+.reel-container {
+  position: absolute;
+  top: -10%;
+  left: 40%;
+  z-index: -1;
+  display: flex;
+  transform: rotate(10deg);
+}
+
+.column {
+  margin: 2vmin;
+  transform: rotate(10deg);
+}
+
+.col-1 {
+  animation: moveOffScreen 34s linear infinite;
+}
+
+.col-2 {
+  animation: moveOffScreen 30s linear infinite;
+}
+
+.col-3 {
+  animation: moveOffScreen 26s linear infinite;
+}
+
+@keyframes moveOffScreen {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-50%);
+  }
+}
+
+.glow-element-1 {
+  position: relative;
+  z-index: -1;
+  top: -15%;
+  left: 12%;
+  border-radius: 50%;
+  box-shadow:
+    0 0 140px 80px rgba(255, 0, 255, 0.3), 
+    0 0 140px 120px rgba(0, 255, 255, 0.3); 
+}
+
+.bg-animate {
+  background: linear-gradient(to right, #68b6ff, #a647f3, #68b6ff, #ac54f5);
+  background-size: 400% auto;
+  /* color: transparent; */
+  animation: shine 8s linear infinite;
+  box-shadow:
+    0 0 140px 20px rgba(255, 0, 255, 0.1), 
+    0 0 140px 20px rgba(0, 255, 255, 0.1);
+}
+
+@keyframes shine {
+  0% {
+    background-position: 100% center;
+  }
+  100% {
+    background-position: 0 center;
+  }
+}
+
+nav {
+  background: linear-gradient(to bottom, rgb(255, 255, 255), rgba(255,255,255,0.8));
+  /* background-color: rgba(197, 228, 253, 0.8); */
 }

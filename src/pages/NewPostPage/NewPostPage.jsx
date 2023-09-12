@@ -6,11 +6,9 @@ export default function NewPostPage() {
     <div className="w-2/3 mx-auto mt-10">
         <div>
           <h1 className="text-white text-4xl font-bold">Create Artwork</h1>
-          <p className="text-white mt-2 text-gray-500">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Harum culpa illo alias nulla, atque officia sequi saepe cumque rem ipsam explicabo aliquid natus pariatur repudiandae adipisci, beatae odit. Delectus, ullam?</p>
+          <p className="text-white text-gray-500 my-5">Turn imagination into art. Bring to life stunning artwork in seconds with the power of AI and your creativity. <br /> Can't think of a prompt? Use the 'surprise me!' button for suggestions.</p>
         </div>
-
         <PostForm  />
-        
     </div>
   );
 }

@@ -6,9 +6,11 @@ const OpenAI = require("openai");
 
 module.exports = {
   index,
+  userIndex,
   show,
   create,
   generateImage,
+  deletePost
 };
 
 async function create(req, res) {
@@ -32,6 +34,15 @@ async function create(req, res) {
 async function index(req, res) {
   try {
     let posts = await Post.find({});
+    res.json(posts);
+  } catch (err) {
+    res.status(400).json(err);
+  }
+}
+
+async function userIndex(req, res) {
+  try {
+    let posts = await Post.find({user: req.user._id});
     res.json(posts);
   } catch (err) {
     res.status(400).json(err);
@@ -72,5 +83,15 @@ async function generateImage(req, res) {
 
   } catch (error) {
     res.status(500).json({ error: error.message });
+  }
+}
+
+async function deletePost(req, res) {
+  try {
+    const post = await Post.findById(req.params.id);
+    await post.deleteOne();
+    res.status(200).json(post);
+  } catch (err) {
+    res.status(400).json(err);
   }
 }

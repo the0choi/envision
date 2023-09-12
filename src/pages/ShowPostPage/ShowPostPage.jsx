@@ -41,7 +41,6 @@ export default function ShowPostPage() {
   return (
     <div className="w-2/3 mx-auto mt-10">
         <div>
-
           <h1 className="text-white text-blue-500 hover:cursor-pointer font-bold mb-5" onClick={handleReturn}>⏎ Return</h1>
           <h1 className="text-white text-4xl font-bold">View Artwork</h1>
             {post && <ShowCard key={post._id} post={post} />}

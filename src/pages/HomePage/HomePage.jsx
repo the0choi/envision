@@ -40,13 +40,21 @@ export default function HomePage() {
 
     return (
       <div className="w-2/3 mx-auto mt-10">
-
         <div>
-          <h1 className="text-white text-4xl font-bold">View Community Artwork</h1>
-          <p className="text-white mt-2 text-gray-500">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Harum culpa illo alias nulla, atque officia sequi saepe cumque rem ipsam explicabo aliquid natus pariatur repudiandae adipisci, beatae odit. Delectus, ullam?</p>
+          <h1 className="text-white text-4xl font-bold">Community Artwork</h1>
+          <p className="text-white text-gray-500 my-5">Explore the world's imagination. Vision empowers anyone to create beautiful art and images in seconds. </p>
         </div>
 
-        <SearchForm />
+        <SearchForm
+          searchText={searchText}
+          setSearchText={setSearchText}
+          searchTimeout={searchTimeout} 
+          setSearchTimeout={setSearchTimeout}
+          searchedResults={searchedResults}
+          setSearchedResults={setSearchedResults}
+          allPosts={allPosts} 
+          setAllPosts={setAllPosts}
+          />
 
         <div>
           {loading ? 
@@ -54,7 +62,7 @@ export default function HomePage() {
           :
           <>
             {searchText && (
-              <h2 className="text-gray-500 text-xl mb-3">Showing results for <span className="text-black">{searchText}</span></h2>
+              <h2 className="text-gray-500 text-xl mb-3">Showing results for <span className="text-white font-bold">{searchText}</span></h2>
             )}
 
             <div className="grid lg:grid-cols-4 sm:grid-cols-3 xs:grid-cols-2 grid-cols-1 gap-3">
