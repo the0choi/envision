@@ -13,13 +13,13 @@ export default function ImageReel() {
 
   useEffect(() => {
     const imgs = [
-      'https://res.cloudinary.com/dhc1ehxg4/image/upload/v1694414363/osomrxvvtn8qxy9dukai.png',
-      'https://res.cloudinary.com/dhc1ehxg4/image/upload/v1694415463/edzhsett24v1o1wq86wu.png',
-      'http://res.cloudinary.com/dhc1ehxg4/image/upload/v1694415174/sedr1ezgwwt3hwwi1ci4.png',
-      'http://res.cloudinary.com/dhc1ehxg4/image/upload/v1694414289/ppbktq8rav6xk8t7idx6.png',
+      'http://res.cloudinary.com/dhc1ehxg4/image/upload/v1694414363/osomrxvvtn8qxy9dukai.png',
       'http://res.cloudinary.com/dhc1ehxg4/image/upload/v1694428418/pvdaitv9wt5ixqn219hv.png',
-      'http://res.cloudinary.com/dhc1ehxg4/image/upload/v1694428510/kat5cqulo2ylm0h3mbwp.png',
-      'http://res.cloudinary.com/dhc1ehxg4/image/upload/v1694428778/ez9qt4274qmgmyuvc6ae.png'
+      'http://res.cloudinary.com/dhc1ehxg4/image/upload/v1694478938/eftyoyr9gdegbqfk6oaa.png',
+      'http://res.cloudinary.com/dhc1ehxg4/image/upload/v1694498056/dirkvk4gfv25nlie95dr.png',
+      'http://res.cloudinary.com/dhc1ehxg4/image/upload/v1694495275/rv3ponvh4oan8r59ajrs.png',
+      'http://res.cloudinary.com/dhc1ehxg4/image/upload/v1694501149/mqsgwbopu0weqci44rlz.png',
+      'http://res.cloudinary.com/dhc1ehxg4/image/upload/v1694501216/nufdmiuulbtdkrslfypn.png'
     ];
 
     function shuffle(arr) {

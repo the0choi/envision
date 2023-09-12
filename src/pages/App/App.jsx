@@ -14,7 +14,6 @@ export default function App() {
 
   return (
     <main className="App">
-      <div className="w-screen h-screen -z-10 fixed bg-animate opacity-10"></div>
       { user ?
           <>
             <NavBar user={user} setUser={setUser} />

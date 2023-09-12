@@ -1,18 +1,20 @@
 import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import * as usersService from '../../utilities/users-service';
 import Loader from '../../components/Loader/Loader';
 import PostCard from '../../components/PostCard/PostCard';
 
 export default function UserPage() {
+  const { id } = useParams();
   const [loading, setLoading] = useState(false);
   const [allPosts, setAllPosts] = useState([]);
-  const [user, setUser] = useState({name: '', initial: '', id: ''});
+  const [user, setUser] = useState({name: '', initial: ''});
 
   async function fetchPosts() {
     setLoading(true);
     try {
       const token = usersService.getToken();
-      const response = await fetch('/api/posts/user', {
+      const response = await fetch(`/api/posts/user/${id}`, {
         method: 'GET',
         headers: {
           'Authorization': `Bearer ${token}`,
@@ -22,7 +24,7 @@ export default function UserPage() {
 
       if (response.ok) {
         const result = await response.json();
-        setUser({name: result[0].name, initial: result[0].name.charAt(0), id: result[0]._id})
+        setUser({name: result[0].name, initial: result[0].name.charAt(0).toUpperCase()})
         setAllPosts(result.reverse());
         setLoading(false);
       }
@@ -34,7 +36,7 @@ export default function UserPage() {
 
   useEffect( () => {
     fetchPosts();
-  }, []);
+  }, [id]);
 
     return (
       <div className="w-2/3 mx-auto mt-10">

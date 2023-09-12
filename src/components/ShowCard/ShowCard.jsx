@@ -51,8 +51,8 @@ export default function PostCard(props) {
         <box-icon name='message-detail' type='solid' color='#ffffff'></box-icon>
         <h1 className="text-white text-3xl font-bold mt-5">"{props.post.prompt}"</h1>
         <h1 className="text-white text-xl mt-5 mb-5">{readableDate}</h1>
-        <div className="hover:cursor-pointer" onClick={showUser}>
-          <div className="flex items-center rounded-lg py-2 px-4 bg-animate w-36">
+        <div className="">
+          <div className="flex items-center rounded-lg py-2 px-4 bg-animate w-36 hover:cursor-pointer" onClick={showUser}>
             <div className="w-10 h-10 rounded-full object-cover bg-[#6469ff] flex justify-center items-center text-white font-bold mx-2">{capitalLetter}</div>
             <p className="text-white text-lg font-bold">{props.post.name}</p>
           </div>

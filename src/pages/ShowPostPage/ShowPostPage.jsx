@@ -1,6 +1,5 @@
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import * as usersService from '../../utilities/users-service';
 import ShowCard from "../../components/ShowCard/ShowCard";
 

@@ -42,7 +42,7 @@ async function index(req, res) {
 
 async function userIndex(req, res) {
   try {
-    let posts = await Post.find({user: req.user._id});
+    let posts = await Post.find({user: req.params.id});
     res.json(posts);
   } catch (err) {
     res.status(400).json(err);
