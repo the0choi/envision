@@ -3,7 +3,7 @@
 ## Introduction
 Envision is an art generator web application. Users submit text-based prompts which is transformed into AI artwork. It also features an artwork interpreter which analyses and describes the artwork as perceived by AI.
 
-**[Visit Envision by clicking here!](https://google.com)**
+**[Visit Envision by clicking here!](https://envision-the0choi-8e677992651d.herokuapp.com/)**
 
 ## Technologies Used
 
