@@ -1,7 +1,8 @@
-const cloudinary = require('cloudinary').v2;
 const Post = require("../../models/post");
 const jwt = require("jsonwebtoken");
 const OpenAI = require("openai");
+const Clarifai = require('clarifai');
+const cloudinary = require('cloudinary').v2;
 
 module.exports = {
   index,
@@ -98,18 +99,34 @@ async function deletePost(req, res) {
 
 async function interpret(req, res) {
   try {
-    const post = await Post.findById(req.params.id);
-    
-
+    const clarifai = new Clarifai.App({ apiKey: process.env.CLARIFAI_API_KEY });
     const openai = new OpenAI(process.env.OPENAI_API_KEY);
-    const response = await openai.Completion.create({
-      engine: "davinci",
-      prompt: `Describe the image with these attributes: ${description}`,
-      max_tokens: 150
-  })
-    
+
+    // Find image url
+    const post = await Post.findById(req.params.id);
+    const image = post.photo;
+
+    // Pass image to Clarifai to obtain image description tags
+    const clarifaiResponse = await clarifai.models.predict(Clarifai.GENERAL_MODEL, image);
+    console.log(clarifaiResponse)
+    const concepts = clarifaiResponse.outputs[0].data.concepts;
+    console.log(concepts)
+    const description = concepts.map(concept => concept.name).join(', ');
+
+    // Provide image tags to chatGPT to obtain description of image
+    const gptResponse = await openai.chat.completions.create({
+      model: "gpt-3.5-turbo",
+      messages: [
+        {"role": "system", "content": "You are a helpful assistant specialising in artwork analysis and interpretation."},
+        {"role": "user", "content": `An image artwork has been generated with AI from a prompt provided by a user. The prompt is as follows: ${post.prompt}. Using image recognition software, the image has been noted to have the following attributes: ${description}. Please provide a description of the image with the information provided and ensure your description is 100 words or less.`},
+      ],
+    });
+
+    // console.log(gptResponse)
+    res.json(gptResponse.choices[0].message);
 
   } catch (error) {
+    console.error("Error during OpenAI call:", error.response ? error.response.data : error.message);
     res.status(500).json({ error: error.message });
   }
 }

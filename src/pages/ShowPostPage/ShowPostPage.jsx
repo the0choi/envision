@@ -7,7 +7,6 @@ export default function ShowPostPage() {
   const navigate = useNavigate();
   const { id } = useParams();
   const [post, setPost] = useState(null);
-  const [loading, setLoading] = useState(false);
   const [AIDescription, setAIDescription] = useState("Curious to see what AI knows about this image? Click 'AI Interpret' to get started.")
 
   async function fetchPost() {
@@ -40,6 +39,7 @@ export default function ShowPostPage() {
   }
 
   async function handleInterpret() {
+    setAIDescription('Generating, please wait...')
     try {
       const token = usersService.getToken();
       const response = await fetch(`/api/posts/interpret/${id}`, {
@@ -52,10 +52,11 @@ export default function ShowPostPage() {
 
       if (response.ok) {
         const result = await response.json();
-        setAIDescription(result);
+        setAIDescription(result.content);
       }
 
     } catch (err) {
+      setAIDescription('Error while generating. Please try again.')
       console.error(err);
     }
   }
@@ -76,7 +77,9 @@ export default function ShowPostPage() {
           <p className="text-white text-lg font-bold ml-2 mr-1">AI Interpret</p>
         </div>
 
-        <textarea className="w-2/3 h-full py-4 px-4 my-10 rounded-xl bg-[#1c1c1c] text-gray-200 border border-white border-1 border-opacity-30" name="prompt" maxlength="400" value={AIDescription} />
+        <div className="w-2/3 min-h-full h-full py-4 px-4 mt-10 mb-20 rounded-xl bg-[#1c1c1c] text-gray-200 border border-white border-1 border-opacity-30">
+        {AIDescription}
+        </div>
       </div>
 
     </div>
