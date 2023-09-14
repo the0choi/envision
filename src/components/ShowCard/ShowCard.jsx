@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import * as usersService from '../../utilities/users-service';
 
@@ -12,7 +11,7 @@ export default function PostCard(props) {
   const year = dateStr.getFullYear();
   const readableDate = `${day}/${month}/${year}`;
 
-  const [user, setUser] = useState(usersService.getUser());
+  const user = usersService.getUser();
   const isUsersPost = (user._id === props.post.user) ? true : false;
 
   async function handleDelete(evt) {
@@ -45,7 +44,7 @@ export default function PostCard(props) {
   }
 
   return (
-    <div className="flex justify-center items-center mt-10 pl-10">
+    <div className="flex xs-flex justify-center items-center mt-10 pl-10">
       <img className="h-fit w-auto object-cover rounded-xl transition ease-in-out hover:scale-105 hover:z-10 duration-300" src={props.post.photo} alt={props.post.prompt} draggable="false" />
       <div className="mt-5 flex flex-col justify-center gap-2 p-16">
         <box-icon name='message-detail' type='solid' color='#ffffff'></box-icon>

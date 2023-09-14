@@ -7,27 +7,22 @@
   font-family: 'Inter', sans-serif;
 }
 
-@media screen and (min-width: 480px) {
-  .card:nth-child(7n + 1) {
-      grid-column: auto/span 2;
-      grid-row: auto/span 2;
-  }
+.acc-msg {
+  text-shadow: 0 0 2px rgba(0, 0, 0, 1);
+  backdrop-filter: blur(4px);
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
 }
 
-:root {
-  --white: #FFFFFF;
-  --tan-1: #FBF9F6;
-  --tan-2: #E7E2DD;
-  --tan-3: #E2D9D1;
-  --tan-4: #D3C1AE;
-  --orange: #F67F00;
-  --text-light: #968c84;
-  --text-dark: #615954;
+.welcome-msg {
+  text-shadow: 0 0 2px rgba(0, 0, 0, 1);
+  backdrop-filter: blur(4px);
 }
 
 p.error-message {
   color: orangered;
   text-align: center;
+  margin-top: 5px;
   margin-bottom: 5px;
 }
 
@@ -168,18 +163,31 @@ button:disabled, form:invalid button[type="submit"] {
   text-shadow: 0 0 8px #615954;
 }
 
-.blurry-text-fix { 
-  -webkit-font-smoothing: subpixel-antialiased;
-  transform: translate3d(-50%, -50%, 0) scale(2, 2); 
-  zoom: 0.5;
+@media screen and (min-width: 480px) {
+  .card:nth-child(7n + 1) {
+      grid-column: auto/span 2;
+      grid-row: auto/span 2;
+  }
 }
 
-.glass-card {
-  background: rgba( 255, 255, 255, 0.05 );
-  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
-  backdrop-filter: blur( 4px );
-  -webkit-backdrop-filter: blur( 4px );
-  border-radius: 10px;
-  border: 1px solid rgba( 255, 255, 255, 0.1 );
-  padding: 2vmin;
+@media (max-width: 800px) {
+  .logo-xs {
+    font-size: 15px;
+  }
+
+  .link-xs {
+    font-size: 15px;
+    padding: 7px;
+  }
+
+  .xs-width {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .xs-flex {
+    flex-direction: column;
+    padding-left: 0;
+  }
 }

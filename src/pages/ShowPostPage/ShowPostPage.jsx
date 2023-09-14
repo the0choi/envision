@@ -9,30 +9,30 @@ export default function ShowPostPage() {
   const [post, setPost] = useState(null);
   const [AIDescription, setAIDescription] = useState("Curious to see what AI knows about this image? Click 'AI Interpret' to get started.")
 
-  async function fetchPost() {
-    try {
-      const token = usersService.getToken();
-      const response = await fetch(`/api/posts/${id}`, {
-        method: 'GET',
-        headers: {
-          'Authorization': `Bearer ${token}`,
-          'Content-Type': 'application/json',
-        },
-      });
-
-      if (response.ok) {
-        const result = await response.json();
-        setPost(result);
-      }
-
-    } catch (err) {
-      console.error(err);
-    }
-  }
-
   useEffect( () => {
+    async function fetchPost() {
+      try {
+        const token = usersService.getToken();
+        const response = await fetch(`/api/posts/${id}`, {
+          method: 'GET',
+          headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json',
+          },
+        });
+  
+        if (response.ok) {
+          const result = await response.json();
+          setPost(result);
+        }
+  
+      } catch (err) {
+        console.error(err);
+      }
+    }
+
     fetchPost();
-  }, []);
+  }, [id]);
 
   function handleReturn() {
     navigate(`/`);
@@ -62,7 +62,7 @@ export default function ShowPostPage() {
   }
 
   return (
-    <div className="w-2/3 mx-auto mt-10">
+    <div className="w-2/3 mx-auto mt-10 xs-width">
       <div>
         <p className="w-fit mb-5 bg-gray-600 rounded-lg py-1 px-3 text-white hover:cursor-pointer font-bold hover:bg-opacity-80 duration-300" onClick={handleReturn}>⏎ Home</p>
         <h1 className="text-white text-4xl font-bold">View Artwork</h1>
@@ -77,7 +77,7 @@ export default function ShowPostPage() {
           <p className="text-white text-lg font-bold ml-2 mr-1">AI Interpret</p>
         </div>
 
-        <div className="w-2/3 min-h-full h-full py-4 px-4 mt-10 mb-20 rounded-xl bg-[#1c1c1c] text-gray-200 border border-white border-1 border-opacity-30">{AIDescription}</div>
+        <div className="w-4/5 xs-width h-full py-4 px-4 mt-10 mb-20 rounded-xl bg-[#1c1c1c] text-gray-200 border border-white border-1 border-opacity-30">{AIDescription}</div>
       </div>
 
     </div>

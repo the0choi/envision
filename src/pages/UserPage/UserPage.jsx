@@ -10,57 +10,56 @@ export default function UserPage() {
   const [allPosts, setAllPosts] = useState([]);
   const [user, setUser] = useState({name: '', initial: ''});
 
-  async function fetchPosts() {
-    setLoading(true);
-    try {
-      const token = usersService.getToken();
-      const response = await fetch(`/api/posts/user/${id}`, {
-        method: 'GET',
-        headers: {
-          'Authorization': `Bearer ${token}`,
-          'Content-Type': 'application/json',
-        },
-      });
-
-      if (response.ok) {
-        const result = await response.json();
-
-        // User has no posts, so fetch user
-        if (result.length === 0) {
-          const responseUser = await fetch(`/api/users/check-user/${id}`, {
-            method: 'GET',
-            headers: {
-              'Authorization': `Bearer ${token}`,
-              'Content-Type': 'application/json',
-            },
-          });
-
-          if (responseUser.ok) {
-            const resultUser = await responseUser.json();
-            setUser({name: resultUser.name, initial: resultUser.name.charAt(0).toUpperCase()})
-            setLoading(false);
-            return
-          }
-
-        }
-
-        setUser({name: result[0].name, initial: result[0].name.charAt(0).toUpperCase()})
-        setAllPosts(result.reverse());
-        setLoading(false);
-      }
-
-    } catch (err) {
-      console.error(err);
-    }
-  }
-
   useEffect( () => {
+    async function fetchPosts() {
+      setLoading(true);
+      try {
+        const token = usersService.getToken();
+        const response = await fetch(`/api/posts/user/${id}`, {
+          method: 'GET',
+          headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json',
+          },
+        });
+  
+        if (response.ok) {
+          const result = await response.json();
+  
+          // User has no posts, so fetch user
+          if (result.length === 0) {
+            const responseUser = await fetch(`/api/users/check-user/${id}`, {
+              method: 'GET',
+              headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json',
+              },
+            });
+  
+            if (responseUser.ok) {
+              const resultUser = await responseUser.json();
+              setUser({name: resultUser.name, initial: resultUser.name.charAt(0).toUpperCase()})
+              setLoading(false);
+              return
+            }
+  
+          }
+  
+          setUser({name: result[0].name, initial: result[0].name.charAt(0).toUpperCase()})
+          setAllPosts(result.reverse());
+          setLoading(false);
+        }
+  
+      } catch (err) {
+        console.error(err);
+      }
+    }
+    
     fetchPosts();
   }, [id]);
 
     return (
-      <div className="w-2/3 mx-auto mt-10">
-
+      <div className="w-2/3 mx-auto mt-10 xs-width">
         <div className="mt-5 flex flex-col justify-center items-center gap-2 bg-gray-500 rounded-lg py-10 bg-animate relative h-48 mb-40">
           <div className="flex flex-col items-center gap-8 justify-center absolute top-24">
               <div className="w-36 h-36 rounded-full object-cover bg-white flex justify-center items-center text-black text-7xl font-bold hover:scale-110 duration-300"><span className="text-animate">{user.initial}</span></div>

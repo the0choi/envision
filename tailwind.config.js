@@ -1,9 +1,9 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  purge: ["./src/**/*.{js,jsx,ts,tsx}", "./index.html"],
   content: ["./src/**/*.{js,jsx,ts,tsx}", "./index.html"],
   theme: {
     extend: {
-      xs: "480px",
     },
     fontFamily: {
       'inter': ['Inter', 'sans-serif'],

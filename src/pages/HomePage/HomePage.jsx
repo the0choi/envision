@@ -41,7 +41,7 @@ export default function HomePage() {
 
     return (
       <>
-        <div className="w-2/3 mx-auto mt-10">
+        <div className="w-2/3 mx-auto mt-10 xs-width">
           <div>
             <h1 className="text-white text-4xl font-bold">Community Artwork</h1>
             <p className="text-white text-gray-500 my-5">Explore the world's imagination. Vision empowers anyone to create beautiful art and images in seconds. </p>
@@ -68,7 +68,7 @@ export default function HomePage() {
               :
               <>
                 {searchedResults.length === 0 ? 
-                  <h2 className="text-gray-500 font-bold text-xl mt-10">No results found</h2>
+                  <h2 className="text-gray-500 font-bold text-xl mt-10 mb-96">No results found</h2>
                 :
                   <>
                     {searchText && (
@@ -79,7 +79,6 @@ export default function HomePage() {
               </>
               }
               
-
               <div className="grid lg:grid-cols-4 sm:grid-cols-3 xs:grid-cols-2 grid-cols-1 gap-3">
                 {searchText ?
                   searchedResults.map( (post) => <PostCard key={post._id} post={post} />)
@@ -90,7 +89,6 @@ export default function HomePage() {
             </>
             }
           </div>
-
         </div>
         <Footer />
       </>
