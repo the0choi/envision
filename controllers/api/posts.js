@@ -108,9 +108,7 @@ async function interpret(req, res) {
 
     // Pass image to Clarifai to obtain image description tags
     const clarifaiResponse = await clarifai.models.predict(Clarifai.GENERAL_MODEL, image);
-    console.log(clarifaiResponse)
     const concepts = clarifaiResponse.outputs[0].data.concepts;
-    console.log(concepts)
     const description = concepts.map(concept => concept.name).join(', ');
 
     // Provide image tags to chatGPT to obtain description of image
@@ -118,11 +116,10 @@ async function interpret(req, res) {
       model: "gpt-3.5-turbo",
       messages: [
         {"role": "system", "content": "You are a helpful assistant specialising in artwork analysis and interpretation."},
-        {"role": "user", "content": `An image artwork has been generated with AI from a prompt provided by a user. The prompt is as follows: ${post.prompt}. Using image recognition software, the image has been noted to have the following attributes: ${description}. Please provide a description of the image with the information provided and ensure your description is 100 words or less.`},
+        {"role": "user", "content": `An image artwork has been generated with AI from a prompt provided by a user. The prompt is as follows: ${post.prompt}. Using image recognition software, the image has been noted to have the following attributes: ${description}. Please provide a description of the image with the information provided and ensure your description is 100 words or less and divide your sentences into paragraphs.`},
       ],
     });
 
-    // console.log(gptResponse)
     res.json(gptResponse.choices[0].message);
 
   } catch (error) {

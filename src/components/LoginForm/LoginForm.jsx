@@ -31,8 +31,8 @@ export default function LoginForm({ setUser }) {
     <div className="w-96">
       <div className="">
         <form autoComplete="off" onSubmit={handleSubmit} className="flex flex-col justify-center items-center">
-          <input className="w-full py-4 px-4 my-1 rounded-xl bg-[#1c1c1c] text-white" type="text" name="email" placeholder="Email" value={credentials.email} onChange={handleChange} required />
-          <input className="w-full py-4 px-4 my-1 rounded-xl bg-[#1c1c1c] text-white" type="password" name="password" placeholder="Password" value={credentials.password} onChange={handleChange} required />
+          <input className="w-full py-4 px-4 my-1 rounded-xl bg-[#1c1c1c] text-white border border-white border-opacity-30" type="text" name="email" placeholder="Email" value={credentials.email} onChange={handleChange} required />
+          <input className="w-full py-4 px-4 my-1 rounded-xl bg-[#1c1c1c] text-white border border-white border-opacity-30" type="password" name="password" placeholder="Password" value={credentials.password} onChange={handleChange} required />
           <button className="w-full py-4 px-4 my-1 border-solid border-transparent rounded-xl bg-white text-white font-bold btn-hover" type="submit">Log In</button>
         </form>
       </div>

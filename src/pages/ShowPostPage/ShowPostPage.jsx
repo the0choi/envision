@@ -64,7 +64,7 @@ export default function ShowPostPage() {
   return (
     <div className="w-2/3 mx-auto mt-10">
       <div>
-        <p className="w-fit mb-5 bg-gray-600 rounded-lg py-1 px-2 text-white hover:cursor-pointer font-bold hover:bg-opacity-80 duration-300" onClick={handleReturn}>⏎ Home</p>
+        <p className="w-fit mb-5 bg-gray-600 rounded-lg py-1 px-3 text-white hover:cursor-pointer font-bold hover:bg-opacity-80 duration-300" onClick={handleReturn}>⏎ Home</p>
         <h1 className="text-white text-4xl font-bold">View Artwork</h1>
           {post && <ShowCard key={post._id} post={post} />}
       </div>
@@ -77,9 +77,7 @@ export default function ShowPostPage() {
           <p className="text-white text-lg font-bold ml-2 mr-1">AI Interpret</p>
         </div>
 
-        <div className="w-2/3 min-h-full h-full py-4 px-4 mt-10 mb-20 rounded-xl bg-[#1c1c1c] text-gray-200 border border-white border-1 border-opacity-30">
-        {AIDescription}
-        </div>
+        <div className="w-2/3 min-h-full h-full py-4 px-4 mt-10 mb-20 rounded-xl bg-[#1c1c1c] text-gray-200 border border-white border-1 border-opacity-30">{AIDescription}</div>
       </div>
 
     </div>

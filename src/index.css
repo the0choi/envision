@@ -92,7 +92,7 @@ button:disabled, form:invalid button[type="submit"] {
 .reel-container {
   position: absolute;
   top: 0%;
-  left: 33%;
+  right: 20%;
   z-index: -1;
   display: flex;
   transform: rotate(10deg);
@@ -104,15 +104,15 @@ button:disabled, form:invalid button[type="submit"] {
 }
 
 .col-1 {
-  animation: moveOffScreen 60s linear infinite;
+  animation: moveOffScreen 100s linear infinite;
 }
 
 .col-2 {
-  animation: moveOffScreen 50s linear infinite;
+  animation: moveOffScreen 110s linear infinite;
 }
 
 .col-3 {
-  animation: moveOffScreen 45s linear infinite;
+  animation: moveOffScreen 85s linear infinite;
 }
 
 @keyframes moveOffScreen {

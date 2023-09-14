@@ -21,7 +21,9 @@ export default function ImageReel() {
       'http://res.cloudinary.com/dhc1ehxg4/image/upload/v1694501149/mqsgwbopu0weqci44rlz.png',
       'http://res.cloudinary.com/dhc1ehxg4/image/upload/v1694501216/nufdmiuulbtdkrslfypn.png',
       'http://res.cloudinary.com/dhc1ehxg4/image/upload/v1694512673/ywolix9h3d7qy7dpfzop.png',
-      'http://res.cloudinary.com/dhc1ehxg4/image/upload/v1694500637/hqtawenpnfhexlaq5dia.png'
+      'http://res.cloudinary.com/dhc1ehxg4/image/upload/v1694500637/hqtawenpnfhexlaq5dia.png',
+      'http://res.cloudinary.com/dhc1ehxg4/image/upload/v1694658873/f9hsjurgvlsb1tzr1iaa.png',
+      'http://res.cloudinary.com/dhc1ehxg4/image/upload/v1694570376/rglkc3rqbjx2yqsacppa.png',
     ];
 
     function shuffle(arr) {
