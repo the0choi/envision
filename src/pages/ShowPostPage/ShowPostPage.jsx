@@ -7,6 +7,8 @@ export default function ShowPostPage() {
   const navigate = useNavigate();
   const { id } = useParams();
   const [post, setPost] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [AIDescription, setAIDescription] = useState("Curious to see what AI knows about this image? Click 'AI Interpret' to get started.")
 
   async function fetchPost() {
     try {
@@ -37,14 +39,45 @@ export default function ShowPostPage() {
     navigate(`/`);
   }
 
+  async function handleInterpret() {
+    try {
+      const token = usersService.getToken();
+      const response = await fetch(`/api/posts/interpret/${id}`, {
+        method: 'GET',
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json',
+        },
+      });
+
+      if (response.ok) {
+        const result = await response.json();
+        setAIDescription(result);
+      }
+
+    } catch (err) {
+      console.error(err);
+    }
+  }
+
   return (
     <div className="w-2/3 mx-auto mt-10">
-        <div>
-          <h1 className="text-white text-blue-500 hover:cursor-pointer font-bold mb-5" onClick={handleReturn}>⏎ Return</h1>
-          <h1 className="text-white text-4xl font-bold">View Artwork</h1>
-            {post && <ShowCard key={post._id} post={post} />}
+      <div>
+        <p className="w-fit mb-5 bg-gray-600 rounded-lg py-1 px-2 text-white hover:cursor-pointer font-bold hover:bg-opacity-80 duration-300" onClick={handleReturn}>⏎ Home</p>
+        <h1 className="text-white text-4xl font-bold">View Artwork</h1>
+          {post && <ShowCard key={post._id} post={post} />}
+      </div>
+
+      <div className="w-full border-b border-white my-10"></div>
+
+      <div className="flex flex-col items-center px-10">
+        <div className="flex justify-center items-center rounded-lg py-4 px-4 bg-gray-700 w-44 hover:cursor-pointer transition ease-in-out hover:scale-105 hover:bg-gray-600 duration-200" onClick={handleInterpret}>
+          <box-icon name='message-alt-edit' type='solid' animation='tada' color='#ffffff' ></box-icon>
+          <p className="text-white text-lg font-bold ml-2 mr-1">AI Interpret</p>
         </div>
 
+        <textarea className="w-2/3 h-full py-4 px-4 my-10 rounded-xl bg-[#1c1c1c] text-gray-200 border border-white border-1 border-opacity-30" name="prompt" maxlength="400" value={AIDescription} />
+      </div>
 
     </div>
   );

@@ -7,13 +7,13 @@ import UserPage from '../UserPage/UserPage';
 import NewPostPage from '../NewPostPage/NewPostPage';
 import ShowPostPage from '../ShowPostPage/ShowPostPage';
 import NavBar from '../../components/NavBar/NavBar';
-import Footer from '../../components/Footer/Footer';
 
 export default function App() {
   const [user, setUser] = useState(getUser());
 
   return (
     <main className="App">
+      <div className="w-screen h-screen fixed bg-gray-900 -z-20"></div>
       { user ?
           <>
             <NavBar user={user} setUser={setUser} />
@@ -23,7 +23,6 @@ export default function App() {
               <Route path="/posts/new" element={<NewPostPage />} />
               <Route path="/posts/:id" element={<ShowPostPage />} />
             </Routes>
-            <Footer />
           </>
           :
           <AuthPage setUser={setUser} />

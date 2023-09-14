@@ -1,4 +1,3 @@
-// import {v2 as cloudinary} from 'cloudinary';
 const cloudinary = require('cloudinary').v2;
 const Post = require("../../models/post");
 const jwt = require("jsonwebtoken");
@@ -10,7 +9,8 @@ module.exports = {
   show,
   create,
   generateImage,
-  deletePost
+  deletePost,
+  interpret
 };
 
 async function create(req, res) {
@@ -93,5 +93,23 @@ async function deletePost(req, res) {
     res.status(200).json(post);
   } catch (err) {
     res.status(400).json(err);
+  }
+}
+
+async function interpret(req, res) {
+  try {
+    const post = await Post.findById(req.params.id);
+    
+
+    const openai = new OpenAI(process.env.OPENAI_API_KEY);
+    const response = await openai.Completion.create({
+      engine: "davinci",
+      prompt: `Describe the image with these attributes: ${description}`,
+      max_tokens: 150
+  })
+    
+
+  } catch (error) {
+    res.status(500).json({ error: error.message });
   }
 }

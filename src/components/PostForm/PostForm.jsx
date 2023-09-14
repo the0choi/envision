@@ -114,7 +114,7 @@ export default function PostForm(props) {
           <div className="mt-10">
             <p className="text-red-500">{error}</p>
             <p className="mt-2 text-white">Share your image with the community!</p>
-            <button type="submit" className="mt-3 text-white bg-[#6469ff] font-bold rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center btn-hover">
+            <button type="submit" className="mt-3 text-white font-bold rounded-lg text-md w-full sm:w-auto px-5 py-2.5 text-center bg-yellow-500 transition ease-in-out hover:scale-105 duration-200 text-shadow-1">
               {loading ? 'Sharing...' : 'Share'}
             </button>
           </div>

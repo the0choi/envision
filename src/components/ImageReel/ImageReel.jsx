@@ -19,7 +19,9 @@ export default function ImageReel() {
       'http://res.cloudinary.com/dhc1ehxg4/image/upload/v1694498056/dirkvk4gfv25nlie95dr.png',
       'http://res.cloudinary.com/dhc1ehxg4/image/upload/v1694495275/rv3ponvh4oan8r59ajrs.png',
       'http://res.cloudinary.com/dhc1ehxg4/image/upload/v1694501149/mqsgwbopu0weqci44rlz.png',
-      'http://res.cloudinary.com/dhc1ehxg4/image/upload/v1694501216/nufdmiuulbtdkrslfypn.png'
+      'http://res.cloudinary.com/dhc1ehxg4/image/upload/v1694501216/nufdmiuulbtdkrslfypn.png',
+      'http://res.cloudinary.com/dhc1ehxg4/image/upload/v1694512673/ywolix9h3d7qy7dpfzop.png',
+      'http://res.cloudinary.com/dhc1ehxg4/image/upload/v1694500637/hqtawenpnfhexlaq5dia.png'
     ];
 
     function shuffle(arr) {
@@ -31,10 +33,14 @@ export default function ImageReel() {
       return shuffledArr; 
     }
 
+    const shuffled1 = shuffle(imgs);
+    const shuffled2 = shuffle([...shuffled1]);
+    const shuffled3 = shuffle([...shuffled2]);
+
     setImages({
-      col1: shuffle(imgs),
-      col2: shuffle(imgs),
-      col3: shuffle(imgs)
+      col1: shuffled1,
+      col2: shuffled2,
+      col3: shuffled3
     });
 
   }, []);

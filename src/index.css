@@ -1,7 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Nunito&display=swap');
 
 * {
   font-family: 'Inter', sans-serif;
@@ -25,21 +25,6 @@
   --text-dark: #615954;
 }
 
-*, *:before, *:after {
-  box-sizing: border-box;
-}
-
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-  sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  background-color: #101010;
-  height: 100vh;
-}
-
 p.error-message {
   color: orangered;
   text-align: center;
@@ -53,7 +38,6 @@ button:disabled, form:invalid button[type="submit"] {
 .btn-hover {
   background-size: 200% 100%;
   background-image: linear-gradient(to right, #68b6ff, #8718e2);
-
   -o-transition: all .2s ease-in-out;
   -webkit-transition: all .2s ease-in-out;
   transition: all .2s ease-in-out;
@@ -68,10 +52,12 @@ button:disabled, form:invalid button[type="submit"] {
 .text-animate {
   background: linear-gradient(to right, #68b6ff, #a647f3, #68b6ff, #ac54f5);
   background-size: 400% auto;
+  background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
   -webkit-text-fill-color: transparent;
   animation: shine 8s linear infinite;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.1);
 }
 
 @keyframes shine {
@@ -105,8 +91,8 @@ button:disabled, form:invalid button[type="submit"] {
 
 .reel-container {
   position: absolute;
-  top: -10%;
-  left: 40%;
+  top: 0%;
+  left: 33%;
   z-index: -1;
   display: flex;
   transform: rotate(10deg);
@@ -138,25 +124,10 @@ button:disabled, form:invalid button[type="submit"] {
   }
 }
 
-.glow-element-1 {
-  position: relative;
-  z-index: -1;
-  top: -15%;
-  left: 12%;
-  border-radius: 50%;
-  box-shadow:
-    0 0 140px 80px rgba(255, 0, 255, 0.3), 
-    0 0 140px 120px rgba(0, 255, 255, 0.3); 
-}
-
 .bg-animate {
   background: linear-gradient(to right, #68b6ff, #a647f3, #68b6ff, #ac54f5);
   background-size: 400% auto;
-  /* color: transparent; */
   animation: shine 8s linear infinite;
-  box-shadow:
-    0 0 140px 20px rgba(255, 0, 255, 0.1), 
-    0 0 140px 20px rgba(0, 255, 255, 0.1);
 }
 
 @keyframes shine {
@@ -166,10 +137,6 @@ button:disabled, form:invalid button[type="submit"] {
   100% {
     background-position: 0 center;
   }
-}
-
-nav {
-  background: linear-gradient(to bottom, rgb(255, 255, 255), rgba(255,255,255,0.8));
 }
 
 .typed-container {
@@ -195,4 +162,24 @@ nav {
   0% {border-color: transparent}
   50% {border-color: white}
   100% {border-color: transparent}
+}
+
+.text-shadow-1 {
+  text-shadow: 0 0 8px #615954;
+}
+
+.blurry-text-fix { 
+  -webkit-font-smoothing: subpixel-antialiased;
+  transform: translate3d(-50%, -50%, 0) scale(2, 2); 
+  zoom: 0.5;
+}
+
+.glass-card {
+  background: rgba( 255, 255, 255, 0.05 );
+  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+  backdrop-filter: blur( 4px );
+  -webkit-backdrop-filter: blur( 4px );
+  border-radius: 10px;
+  border: 1px solid rgba( 255, 255, 255, 0.1 );
+  padding: 2vmin;
 }
