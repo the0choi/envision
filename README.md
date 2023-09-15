@@ -1,46 +1,45 @@
 # Envision - AI Art Generation & Interpretation App
 
 ## Introduction
-Envision is an art generator web application. Users submit text-based prompts which is transformed into AI artwork. It also features an artwork interpreter which analyses and describes the artwork as perceived by AI.
+Envision seamlessly transforms textual prompts into striking AI-generated artwork with the help of OpenAI's DALL-E API. Users can delve deep into the AI's perspective as it analyzes, describes, and interprets the artwork it brings to life.
 
 **[Visit Envision by clicking here!](https://envision-the0choi-8e677992651d.herokuapp.com/)**
 
 ## Technologies Used
 
-- JavaScript
-- MERN Stack - MongoDB, Express, React & Node.js
-- DALL-E, Cloudinary, Clarifai & ChatGPT APIs
-- Tailwind CSS
-- Git
-- Heroku
+- **Backend:** JavaScript with the MERN Stack (MongoDB, Express, React, Node.js)
+- **APIs:** DALL-E (artwork generation), Cloudinary (image hosting), Clarifai (image recognition), and ChatGPT (image description)
+- **Styling:** Tailwind CSS
+- **Version Control:** Git
+- **Deployment:** Heroku
 
 ## Key Features
 
-- **AI Generated Artwork**
+- **Instant Artwork Generation:**
 Users can create artwork in seconds with a single text-based prompt. Can't think of a good prompt? A 'surprise me' button will generate a pre-created prompt for you to help with your creativity and inspiration.
 
-- **AI Art Interpretation**
+- **AI Art Interpretation:**
 Get AI to describe, analyse and interpret the artwork you are observing with a click of a button! Discern how accurate its interpretation is, and how much it appears to know about the image.
 
-- **View Community Art**
-Share your artwork with the community and see what other users have created. 
+- **Community Gallery:**
+Showcase your art pieces and immerse yourself in the creative collections of other art creators.
 
-- **User Profiles**
-Easily view a collection of your own and other user's artwork through the profile page.
+- **User Profiles:**
+Easily view a dedicated space for each user, archiving their artistic journey and creations.
 
-- **User Authentication**
+- **User Authentication:**
 Users can sign up, log in and log out securely to access their Envision account.
 
 ## Technical Features
 
-- Build with the MERN stack, using JavaScript as the backend programming language
-- Connected to MongoDB as a NoSQL database, storing information on artwork and users
-- Connected to Dall-E API for AI image generation, Cloudinary API for image hosting, Clarifai for image recognition & ChatGPT for image description generation
-- Stylised with Tailwind CSS for customisability, flexible styling options and responsive design offered
-- Code is structured with MVC design
-- Demonstrates CRUD (no update) functionality for artwork posts
-- Pushed to GitHub via Git
-- Websites deployed to Heroku
+- Employs the MERN stack with JavaScript at its core.
+- Utilizes MongoDB as the primary NoSQL database, preserving artworks and user profiles.
+- Incorporates multiple APIs, including DALL-E for image creation, Cloudinary for robust image management, Clarifai for image recognition and ChatGPT for image description generation.
+- Adopts Tailwind CSS for versatile and responsive designs.
+- Adheres to the MVC architectural pattern.
+- Provides CRUD operations (except update) for managing artwork.
+- Codebase maintained on GitHub using Git.
+- Seamless deployment via Heroku.
 
 ## Screenshots
 ![1](https://i.imgur.com/jJuCjwX.png)
