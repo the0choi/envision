@@ -88,14 +88,12 @@ button:disabled, form:invalid button[type="submit"] {
   position: absolute;
   top: 0%;
   right: 20%;
-  z-index: -1;
   display: flex;
   transform: rotate(10deg);
 }
 
 .column {
   margin: 2vmin;
-  transform: rotate(10deg);
 }
 
 .col-1 {
@@ -107,7 +105,7 @@ button:disabled, form:invalid button[type="submit"] {
 }
 
 .col-3 {
-  animation: moveOffScreen 85s linear infinite;
+  animation: moveOffScreen 90s linear infinite;
 }
 
 @keyframes moveOffScreen {

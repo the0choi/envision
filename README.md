@@ -9,6 +9,7 @@ Envision is an art generator web application. Users submit text-based prompts wh
 
 - JavaScript
 - MERN Stack - MongoDB, Express, React & Node.js
+- DALL-E, Cloudinary, Clarifai & ChatGPT APIs
 - Tailwind CSS
 - Git
 - Heroku
@@ -34,6 +35,7 @@ Users can sign up, log in and log out securely to access their Envision account.
 
 - Build with the MERN stack, using JavaScript as the backend programming language
 - Connected to MongoDB as a NoSQL database, storing information on artwork and users
+- Connected to Dall-E API for AI image generation, Cloudinary API for image hosting, Clarifai for image recognition & ChatGPT for image description generation
 - Stylised with Tailwind CSS for customisability, flexible styling options and responsive design offered
 - Code is structured with MVC design
 - Demonstrates CRUD (no update) functionality for artwork posts

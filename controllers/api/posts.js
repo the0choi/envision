@@ -14,6 +14,7 @@ module.exports = {
   interpret
 };
 
+// Create a post
 async function create(req, res) {
   try {
     const decodedToken = jwt.verify(
@@ -32,6 +33,7 @@ async function create(req, res) {
   }
 }
 
+// Finds all posts
 async function index(req, res) {
   try {
     let posts = await Post.find({});
@@ -41,6 +43,7 @@ async function index(req, res) {
   }
 }
 
+// Finds all posts for a user
 async function userIndex(req, res) {
   try {
     let posts = await Post.find({user: req.params.id});
@@ -50,6 +53,7 @@ async function userIndex(req, res) {
   }
 }
 
+// Finds a single post
 async function show(req, res) {
   try {
     let post = await Post.findById(req.params.id);
@@ -61,6 +65,7 @@ async function show(req, res) {
   }
 }
 
+// Generates an image from DALL-E API and host image on Cloudinary
 async function generateImage(req, res) {
   try {
     const openai = new OpenAI(process.env.OPENAI_API_KEY);
@@ -87,6 +92,7 @@ async function generateImage(req, res) {
   }
 }
 
+// Deletes a post
 async function deletePost(req, res) {
   try {
     const post = await Post.findById(req.params.id);
@@ -97,6 +103,7 @@ async function deletePost(req, res) {
   }
 }
 
+// Interpret and describe a given image using Clarifai and ChatGPT APIs
 async function interpret(req, res) {
   try {
     const clarifai = new Clarifai.App({ apiKey: process.env.CLARIFAI_API_KEY });
@@ -111,7 +118,7 @@ async function interpret(req, res) {
     const concepts = clarifaiResponse.outputs[0].data.concepts;
     const description = concepts.map(concept => concept.name).join(', ');
 
-    // Provide image tags to chatGPT to obtain description of image
+    // Provide image tags to ChatGPT to obtain description of image
     const gptResponse = await openai.chat.completions.create({
       model: "gpt-3.5-turbo",
       messages: [

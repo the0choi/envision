@@ -47,6 +47,7 @@ const randomPrompts = [
     'A Space Shuttle flying above Cape Town, digital art',
   ];
 
+// Get a random prompt 
 export default function getRandomPrompt(prompt) {
   const randomIdx = Math.floor(Math.random() * randomPrompts.length);
   const randomPrompt = randomPrompts[randomIdx];

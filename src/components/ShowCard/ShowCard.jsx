@@ -5,6 +5,7 @@ export default function PostCard(props) {
   const navigate = useNavigate();
   const capitalLetter = props.post.name.charAt(0).toUpperCase() || "";
 
+  // Format date into DD/MM/YYYY 
   const dateStr = new Date(props.post.createdAt);
   const day = dateStr.getDate().toString().padStart(2, '0');
   const month = (dateStr.getMonth() + 1).toString().padStart(2, '0');

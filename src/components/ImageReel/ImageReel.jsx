@@ -7,10 +7,6 @@ export default function ImageReel() {
     col3: []
   });
 
-  const col1Ref = useRef(null);
-  const col2Ref = useRef(null);
-  const col3Ref = useRef(null);
-
   useEffect(() => {
     const imgs = [
       'http://res.cloudinary.com/dhc1ehxg4/image/upload/v1694414363/osomrxvvtn8qxy9dukai.png',
@@ -26,6 +22,7 @@ export default function ImageReel() {
       'http://res.cloudinary.com/dhc1ehxg4/image/upload/v1694570376/rglkc3rqbjx2yqsacppa.png',
     ];
 
+    // Shuffle algorithm that will randomise the images
     function shuffle(arr) {
       const shuffledArr = [...arr];
       for (let i = shuffledArr.length - 1; i > 0; i--) {
@@ -50,7 +47,7 @@ export default function ImageReel() {
   return (
     <div className="-z-10 absolute w-full h-full overflow-hidden">
       <div className="reel-container">
-        <div className="column col-1 w-[300px]" ref={col1Ref}>
+        <div className="column col-1 w-[300px]">
           {images.col1.map((imgSrc, idx) => (
             <img key={idx} src={imgSrc} alt="img-reel" className="object-cover rounded-xl mb-8 w-full h-auto" />
           ))}
@@ -58,7 +55,7 @@ export default function ImageReel() {
             <img key={idx} src={imgSrc} alt="img-reel" className="object-cover rounded-xl mb-8 w-full h-auto" />
           ))}
         </div>
-        <div className="column col-2 w-[300px]" ref={col2Ref}>
+        <div className="column col-2 w-[300px]">
           {images.col2.map((imgSrc, idx) => (
             <img key={idx} src={imgSrc} alt="img-reel" className="object-cover rounded-xl mb-8 w-full h-auto" />
           ))}
@@ -66,7 +63,7 @@ export default function ImageReel() {
             <img key={idx} src={imgSrc} alt="img-reel" className="object-cover rounded-xl mb-8 w-full h-auto" />
           ))}
         </div>
-        <div className="column col-3 w-[300px]" ref={col3Ref}>
+        <div className="column col-3 w-[300px]">
           {images.col3.map((imgSrc, idx) => (
             <img key={idx} src={imgSrc} alt="img-reel" className="object-cover rounded-xl mb-8 w-full h-auto" />
           ))}
