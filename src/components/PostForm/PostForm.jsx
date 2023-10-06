@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import * as usersService from '../../utilities/users-service';
+import * as postsAPI from '../../utilities/posts-api';
 import getRandomPrompt from "../../utilities/getRandomPrompt";
 import Loader from "../../components/Loader/Loader";
 
@@ -29,16 +29,7 @@ export default function PostForm(props) {
       try {
         setError("")
         setGeneratingImg(true);
-        const token = usersService.getToken();
-        const response = await fetch('/api/posts/generateImage', {
-            method: 'POST',
-            headers: {
-              'Authorization': `Bearer ${token}`,
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ prompt: form.prompt }),
-        });
-        const imageUrl = await response.json();
+        const imageUrl = await postsAPI.getImage(form.prompt);
 
         if (imageUrl.error) {
           setError(`Error: Your request was rejected. Please try again or enter a different prompt.`);
@@ -61,16 +52,7 @@ export default function PostForm(props) {
     if (form.prompt && form.photo) {
       setLoading(true);
       try {
-        const token = usersService.getToken();
-        const response = await fetch('/api/posts/create', {
-          method: 'POST',
-          headers: {
-            'Authorization': `Bearer ${token}`,
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ ...form }),
-        });
-        await response.json();
+        await postsAPI.postImage(form);
         navigate('/');
       } catch (err) {
         console.error(err);

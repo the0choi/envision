@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import * as usersService from '../../utilities/users-service';
 import Loader from '../../components/Loader/Loader';
 import PostCard from '../../components/PostCard/PostCard';
+import * as postsAPI from '../../utilities/posts-api';
+import * as usersAPI from '../../utilities/users-api';
 
 export default function UserPage() {
   const { id } = useParams();
@@ -14,42 +15,25 @@ export default function UserPage() {
     async function fetchPosts() {
       setLoading(true);
       try {
-        const token = usersService.getToken();
-        const response = await fetch(`/api/posts/user/${id}`, {
-          method: 'GET',
-          headers: {
-            'Authorization': `Bearer ${token}`,
-            'Content-Type': 'application/json',
-          },
-        });
+        const result = await postsAPI.getUser(id);
   
-        if (response.ok) {
-          const result = await response.json();
-  
-          // User has no posts, so fetch user
-          if (result.length === 0) {
-            const responseUser = await fetch(`/api/users/check-user/${id}`, {
-              method: 'GET',
-              headers: {
-                'Authorization': `Bearer ${token}`,
-                'Content-Type': 'application/json',
-              },
-            });
-  
-            if (responseUser.ok) {
-              const resultUser = await responseUser.json();
-              setUser({name: resultUser.name, initial: resultUser.name.charAt(0).toUpperCase()})
-              setLoading(false);
-              return
-            }
-  
+        // User has no posts, so fetch user
+        if (result.length === 0) {
+          const responseUser = await usersAPI.checkUser(id);
+
+          if (responseUser.ok) {
+            const resultUser = await responseUser.json();
+            setUser({name: resultUser.name, initial: resultUser.name.charAt(0).toUpperCase()})
+            setLoading(false);
+            return
           }
-  
+
+        } else {
           setUser({name: result[0].name, initial: result[0].name.charAt(0).toUpperCase()})
           setAllPosts(result.reverse());
           setLoading(false);
         }
-  
+
       } catch (err) {
         console.error(err);
       }

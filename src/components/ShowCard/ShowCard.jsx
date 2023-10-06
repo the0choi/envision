@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import * as postsAPI from '../../utilities/posts-api';
 import * as usersService from '../../utilities/users-service';
 
 export default function PostCard(props) {
@@ -19,21 +20,8 @@ export default function PostCard(props) {
     evt.preventDefault();
 
       try {
-        const token = usersService.getToken();
-        const response = await fetch(`/api/posts/delete/${props.post._id}`, {
-          method: 'DELETE',
-          headers: {
-            'Authorization': `Bearer ${token}`,
-            'Content-Type': 'application/json',
-          },
-        });
-
-        if(response.ok) {
-          navigate('/');
-        } else {
-          const data = await response.json();
-          console.error(data);
-        }
+        const response = await postsAPI.deletePost(props.post._id);
+        navigate('/');
 
       } catch (err) {
         console.error(err);

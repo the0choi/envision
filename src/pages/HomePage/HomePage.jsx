@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import * as usersService from '../../utilities/users-service';
+import * as postsAPI from '../../utilities/posts-api';
 import Loader from '../../components/Loader/Loader';
 import PostCard from '../../components/PostCard/PostCard';
 import SearchForm from '../../components/SearchForm/SearchForm.jsx';
@@ -15,20 +15,9 @@ export default function HomePage() {
   async function fetchPosts() {
     setLoading(true);
     try {
-      const token = usersService.getToken();
-      const response = await fetch('/api/posts', {
-        method: 'GET',
-        headers: {
-          'Authorization': `Bearer ${token}`,
-          'Content-Type': 'application/json',
-        },
-      });
-
-      if (response.ok) {
-        const result = await response.json();
-        setAllPosts(result.reverse());
-        setLoading(false);
-      }
+      const result = await postsAPI.getPosts();
+      setAllPosts(result.reverse());
+      setLoading(false);
 
     } catch (err) {
       console.error(err);

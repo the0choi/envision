@@ -1,6 +1,7 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import * as usersService from '../../utilities/users-service';
+import * as postsAPI from '../../utilities/posts-api';
 import ShowCard from "../../components/ShowCard/ShowCard";
 
 export default function ShowPostPage() {
@@ -12,19 +13,8 @@ export default function ShowPostPage() {
   useEffect( () => {
     async function fetchPost() {
       try {
-        const token = usersService.getToken();
-        const response = await fetch(`/api/posts/${id}`, {
-          method: 'GET',
-          headers: {
-            'Authorization': `Bearer ${token}`,
-            'Content-Type': 'application/json',
-          },
-        });
-  
-        if (response.ok) {
-          const result = await response.json();
-          setPost(result);
-        }
+        const result = await postsAPI.getPost(id);
+        setPost(result);
   
       } catch (err) {
         console.error(err);
@@ -41,20 +31,9 @@ export default function ShowPostPage() {
   async function handleInterpret() {
     setAIDescription('Generating, please wait...')
     try {
-      const token = usersService.getToken();
-      const response = await fetch(`/api/posts/interpret/${id}`, {
-        method: 'GET',
-        headers: {
-          'Authorization': `Bearer ${token}`,
-          'Content-Type': 'application/json',
-        },
-      });
-
-      if (response.ok) {
-        const result = await response.json();
-        setAIDescription(result.content);
-      }
-
+      const result = await postsAPI.interpret(id);
+      setAIDescription(result.content);
+      
     } catch (err) {
       setAIDescription('Error while generating. Please try again.')
       console.error(err);
